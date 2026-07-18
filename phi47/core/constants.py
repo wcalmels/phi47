@@ -22,7 +22,7 @@ N_HOLOGRAPHIC: int = 23
 
 # ── Ramanujan Modified Constant ───────────────────────────────────────────────
 TAU_STAR_REAL: float = -0.326543817
-TAU_STAR_IMAG: float =  0.024014719
+TAU_STAR_IMAG: float = 0.024014719
 TAU_STAR: complex = complex(TAU_STAR_REAL, TAU_STAR_IMAG)
 """Modified Ramanujan τ* constant."""
 
@@ -61,12 +61,12 @@ HOLOGRAPHIC_ERROR_MAX: float = 1.0 - (N_HOLOGRAPHIC / N) ** 3
 
 # ── Consciousness Certification Thresholds ────────────────────────────────────
 CERT_LEVELS: dict[str, tuple[float, float]] = {
-    "NONE":     (0.0,  0.0),
-    "MINIMAL":  (0.0,  0.5),
-    "LOW":      (0.5,  1.5),
-    "MEDIUM":   (1.5,  3.0),
-    "HIGH":     (3.0,  6.0),
-    "PLATINUM": (6.0,  float("inf")),
+    "NONE": (0.0, 0.0),
+    "MINIMAL": (0.0, 0.5),
+    "LOW": (0.5, 1.5),
+    "MEDIUM": (1.5, 3.0),
+    "HIGH": (3.0, 6.0),
+    "PLATINUM": (6.0, float("inf")),
 }
 """Consciousness certification thresholds for Φ values."""
 
@@ -77,7 +77,7 @@ RE_HALF_TOLERANCE: float = 1e-10
 
 def phi_power(exponent: float) -> float:
     """Return φ^exponent."""
-    return PHI ** exponent
+    return PHI**exponent
 
 
 def certification_level(phi_value: float) -> str:

@@ -11,24 +11,23 @@ Each test includes:
 """
 
 import math
-import pytest
 
 from phi47.core.constants import (
-    PHI,
-    N,
-    TAU_STAR,
-    PHI_47_36,
-    PHI_47_12,
-    NEUTRINO_MASS_EV,
+    ALPHA_HELIX_PSI_DEG,
     INV_FINE_STRUCTURE,
+    LORENTZ_VIOLATION_XI,
     MU_ELECTRON_RATIO,
     N_PARTICLE_GENERATIONS,
-    LORENTZ_VIOLATION_XI,
-    ALPHA_HELIX_PSI_DEG,
+    NEUTRINO_MASS_EV,
+    PHI,
+    PHI_47_12,
+    PHI_47_36,
+    TAU_STAR,
+    N,
 )
 
-
 # ── Golden Ratio ───────────────────────────────────────────────────────────────
+
 
 class TestGoldenRatio:
 
@@ -42,7 +41,7 @@ class TestGoldenRatio:
 
     def test_phi_reciprocal(self):
         """1/φ = φ − 1."""
-        assert abs(1/PHI - (PHI - 1)) < 1e-12
+        assert abs(1 / PHI - (PHI - 1)) < 1e-12
 
     def test_n_is_47(self):
         assert N == 47
@@ -54,6 +53,7 @@ class TestGoldenRatio:
 
 
 # ── Qualia Engine Constants ────────────────────────────────────────────────────
+
 
 class TestQualiaEngineConstants:
 
@@ -90,6 +90,7 @@ class TestQualiaEngineConstants:
 
 # ── Physical Predictions ──────────────────────────────────────────────────────
 
+
 class TestFineStructureConstant:
     """
     1/α = 3N − 4 = 137
@@ -104,11 +105,15 @@ class TestFineStructureConstant:
         assert INV_FINE_STRUCTURE == 137
 
     def test_error_below_1_percent(self):
-        error = abs(INV_FINE_STRUCTURE - self.OBSERVED_INV_ALPHA) / self.OBSERVED_INV_ALPHA
+        error = (
+            abs(INV_FINE_STRUCTURE - self.OBSERVED_INV_ALPHA) / self.OBSERVED_INV_ALPHA
+        )
         assert error < 0.01, f"Error {error:.4%} exceeds 1%"
 
     def test_error_below_0_1_percent(self):
-        error = abs(INV_FINE_STRUCTURE - self.OBSERVED_INV_ALPHA) / self.OBSERVED_INV_ALPHA
+        error = (
+            abs(INV_FINE_STRUCTURE - self.OBSERVED_INV_ALPHA) / self.OBSERVED_INV_ALPHA
+        )
         assert error < 0.001, f"Error {error:.4%} exceeds 0.1%"
 
     def test_formula_3N_minus_4(self):
@@ -160,6 +165,7 @@ class TestLorentzViolation:
 
 # ── Biological Predictions ─────────────────────────────────────────────────────
 
+
 class TestBiologicalPredictions:
 
     def test_alpha_helix_psi_angle(self):
@@ -184,5 +190,5 @@ class TestBiologicalPredictions:
     def test_fibonacci_convergence_to_phi(self):
         """Fibonacci ratios converge to φ."""
         fibs = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
-        ratios = [fibs[i+1]/fibs[i] for i in range(len(fibs)-1)]
+        ratios = [fibs[i + 1] / fibs[i] for i in range(len(fibs) - 1)]
         assert abs(ratios[-1] - PHI) < 0.001

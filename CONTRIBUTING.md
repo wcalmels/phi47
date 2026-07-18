@@ -1,4 +1,4 @@
-﻿# Contributing to φ⁴⁷
+# Contributing to φ⁴⁷
 
 Thank you for your interest in contributing!
 

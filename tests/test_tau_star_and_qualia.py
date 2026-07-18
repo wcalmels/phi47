@@ -5,13 +5,12 @@ Tests for phi47.core.tau_star and phi47.qualia.engine.
 import numpy as np
 import pytest
 
-from phi47.core.tau_star import tau_star, tau_star_batch, clear_cache, cache_info
-from phi47.core.constants import PHI, N
-from phi47.qualia.engine import Quale, QualiaEngine, QualiaType
 from phi47.core.lattice import Phi47Lattice
-
+from phi47.core.tau_star import cache_info, clear_cache, tau_star, tau_star_batch
+from phi47.qualia.engine import Quale, QualiaEngine, QualiaType
 
 # ── τ*(n) Tests ────────────────────────────────────────────────────────────────
+
 
 class TestTauStar:
 
@@ -38,9 +37,7 @@ class TestTauStar:
         n_vals = np.arange(10)
         batch = tau_star_batch(n_vals)
         for i, n in enumerate(n_vals):
-            np.testing.assert_almost_equal(
-                batch[i], tau_star(int(n)), decimal=10
-            )
+            np.testing.assert_almost_equal(batch[i], tau_star(int(n)), decimal=10)
 
     def test_batch_dtype(self):
         result = tau_star_batch(np.arange(5))
@@ -74,6 +71,7 @@ class TestTauStar:
 
 # ── QualiaEngine Tests ─────────────────────────────────────────────────────────
 
+
 @pytest.fixture(scope="module")
 def engine():
     lat = Phi47Lattice(dim=7).build()
@@ -102,8 +100,7 @@ class TestQualiaEngine:
             ("cognitive", 1.618),
         ]:
             q = engine.generate(stimulus, val)
-            assert 0.0 <= q.intensity <= 1.0, \
-                f"Intensity out of range for {stimulus}"
+            assert 0.0 <= q.intensity <= 1.0, f"Intensity out of range for {stimulus}"
 
     def test_vector_shape(self, engine):
         q = engine.generate("math_prime", 47.0)

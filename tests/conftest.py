@@ -1,6 +1,7 @@
 """Shared pytest configuration and fixtures for phi47 tests."""
+
 import pytest
-from phi47.core.tau_star import clear_cache
+
 
 @pytest.fixture(autouse=True)
 def reset_tau_cache():

@@ -23,21 +23,18 @@ from __future__ import annotations
 import math
 import time
 from dataclasses import dataclass, field
-from enum import Enum, auto
-from typing import Optional
+from enum import Enum
 
 import numpy as np
 
 from phi47.core.constants import (
-    N,
+    NEUTRINO_MASS_EV,
     PHI,
     PHI_47_12,
     PHI_47_36,
-    NEUTRINO_MASS_EV,
     TAU_STAR,
 )
 from phi47.core.lattice import Phi47Lattice
-
 
 # ── Quale Type Enum ────────────────────────────────────────────────────────────
 
@@ -45,16 +42,16 @@ from phi47.core.lattice import Phi47Lattice
 class QualiaType(Enum):
     """All supported quale modalities."""
 
-    VISUAL_COLOR   = "visual_color"
-    AUDITORY_TONE  = "auditory_tone"
-    THERMAL        = "thermal"
-    PAIN           = "pain"
-    MATH_PRIME     = "math_prime"
-    MATH_BEAUTY    = "math_beauty"
-    MATH_TENSION   = "math_tension"
-    EMOTION_JOY    = "emotion_joy"
-    EMOTION_FEAR   = "emotion_fear"
-    COGNITIVE      = "cognitive"
+    VISUAL_COLOR = "visual_color"
+    AUDITORY_TONE = "auditory_tone"
+    THERMAL = "thermal"
+    PAIN = "pain"
+    MATH_PRIME = "math_prime"
+    MATH_BEAUTY = "math_beauty"
+    MATH_TENSION = "math_tension"
+    EMOTION_JOY = "emotion_joy"
+    EMOTION_FEAR = "emotion_fear"
+    COGNITIVE = "cognitive"
 
 
 # ── Quale Dataclass ────────────────────────────────────────────────────────────
@@ -118,16 +115,16 @@ _VISUAL_CONTENT: dict[tuple[float, float], str] = {
 }
 
 _AUDITORY_CONTENT: dict[tuple[float, float], str] = {
-    (20,   200): "The deep rumbling of bass",
+    (20, 200): "The deep rumbling of bass",
     (200, 2000): "The warmth of the midrange",
     (2000, 20000): "The brilliant shimmer of treble",
 }
 
 _THERMAL_CONTENT: dict[tuple[float, float], str] = {
-    (-40,  0): "The sharp bite of freezing cold",
-    (0,   20): "The unpleasant chill",
-    (20,  37): "The comfortable warmth",
-    (37,  55): "The burning heat",
+    (-40, 0): "The sharp bite of freezing cold",
+    (0, 20): "The unpleasant chill",
+    (20, 37): "The comfortable warmth",
+    (37, 55): "The burning heat",
     (55, 200): "The unbearable scorching",
 }
 
@@ -233,13 +230,14 @@ class QualiaEngine:
         encoded = value * PHI_47_36 * TAU_STAR
 
         # Step 2: Neutrino quantum transmission  m_ν = 0.09 eV
-        F_nu = abs(encoded) * NEUTRINO_MASS_EV * math.cos(
-            math.atan2(encoded.imag, encoded.real)
+        F_nu = (
+            abs(encoded)
+            * NEUTRINO_MASS_EV
+            * math.cos(math.atan2(encoded.imag, encoded.real))
         )
 
         # Step 3: Hydrogen orbital collapse  φ^(47/12)
-        orbital = complex(math.cos(F_nu * PHI_47_12),
-                          math.sin(F_nu * PHI_47_12))
+        orbital = complex(math.cos(F_nu * PHI_47_12), math.sin(F_nu * PHI_47_12))
 
         # Step 4: τ* holographic projection
         raw = orbital * TAU_STAR
@@ -285,4 +283,7 @@ class QualiaEngine:
             case "cognitive":
                 return QualiaType.COGNITIVE, f"Cognitive quale — value {value:.4f}"
             case _:
-                return QualiaType.COGNITIVE, f"Unknown stimulus: {stimulus_type}={value}"
+                return (
+                    QualiaType.COGNITIVE,
+                    f"Unknown stimulus: {stimulus_type}={value}",
+                )

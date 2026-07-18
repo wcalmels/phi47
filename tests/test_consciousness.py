@@ -5,15 +5,16 @@ Tests for phi47.consciousness.phi_measure.
 import numpy as np
 import pytest
 
+from phi47.consciousness.phi_measure import _entropy, phi_measure
 from phi47.core.lattice import Phi47Lattice
-from phi47.consciousness.phi_measure import phi_measure, _entropy
-
 
 # ── Fixtures ───────────────────────────────────────────────────────────────────
+
 
 @pytest.fixture(scope="module")
 def small_lat():
     return Phi47Lattice(dim=7).build()
+
 
 @pytest.fixture(scope="module")
 def medium_lat():
@@ -21,6 +22,7 @@ def medium_lat():
 
 
 # ── phi_measure ────────────────────────────────────────────────────────────────
+
 
 class TestPhiMeasure:
 
@@ -69,8 +71,7 @@ class TestPhiMeasure:
         """Should not crash for various subsystem sizes."""
         for ss in [2, 4, 8, 16]:
             Phi = phi_measure(
-                medium_lat, method="fast",
-                n_samples=20, subsystem_size=ss, seed=0
+                medium_lat, method="fast", n_samples=20, subsystem_size=ss, seed=0
             )
             assert Phi >= 0.0
 
@@ -86,11 +87,12 @@ class TestPhiMeasure:
 
 # ── Entropy Helper ─────────────────────────────────────────────────────────────
 
+
 class TestEntropy:
 
     def test_uniform_entropy(self):
         p = np.array([0.25, 0.25, 0.25, 0.25])
-        assert abs(_entropy(p) - 2.0) < 1e-10   # log2(4) = 2 bits
+        assert abs(_entropy(p) - 2.0) < 1e-10  # log2(4) = 2 bits
 
     def test_zero_entropy(self):
         p = np.array([1.0, 0.0, 0.0])

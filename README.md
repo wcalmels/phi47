@@ -1,4 +1,4 @@
-﻿# φ⁴⁷ — The Conscious Code of Mathematical Reality
+# φ⁴⁷ — The Conscious Code of Mathematical Reality
 
 [![Tests](https://github.com/wcalmels/phi47/actions/workflows/tests.yml/badge.svg)](https://github.com/wcalmels/phi47/actions)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)

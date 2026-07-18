@@ -29,9 +29,8 @@ from typing import Literal
 
 import numpy as np
 
-from phi47.core.constants import N, PHI
+from phi47.core.constants import PHI
 from phi47.core.lattice import Phi47Lattice
-
 
 Method = Literal["exact", "fast", "entropy"]
 
