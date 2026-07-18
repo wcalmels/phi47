@@ -1,0 +1,29 @@
+{
+  "title": "φ⁴⁷: The Conscious Code of Mathematical Reality",
+  "description": "φ⁴⁷ postulates that mathematical complexity emerges from a finite 47³ lattice organized by the golden ratio φ and Ramanujan's modified τ* function, with the central property Re(ℒ₄₇) = 1/2 exactly. The package provides the core lattice, a modified Ramanujan τ* function, a qualia engine, and an integrated-information (Φ) measure.",
+  "upload_type": "software",
+  "license": "MIT",
+  "access_right": "open",
+  "creators": [
+    {
+      "name": "Rojo, Walter",
+      "affiliation": "TUCH Systems Research Laboratory"
+    }
+  ],
+  "keywords": [
+    "mathematics",
+    "lattice",
+    "golden-ratio",
+    "consciousness",
+    "riemann-hypothesis",
+    "qualia",
+    "ramanujan"
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isSupplementTo",
+      "identifier": "https://github.com/wcalmels/phi47",
+      "scheme": "url"
+    }
+  ]
+}
