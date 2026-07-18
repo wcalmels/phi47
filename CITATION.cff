@@ -3,9 +3,9 @@ title: "φ⁴⁷: The Conscious Code of Mathematical Reality"
 message: "If you use this software, please cite it using these metadata."
 type: software
 authors:
-  - family-names: Rojo
+  - family-names: Calmels Von Dem Knesebeck
     given-names: Walter
-    email: phi47@consciousmath.org
+    email: wcalmels@phi47.cl
     affiliation: TUCH Systems Research Laboratory
 repository-code: "https://github.com/wcalmels/phi47"
 url: "https://github.com/wcalmels/phi47"
@@ -24,5 +24,5 @@ keywords:
   - qualia
   - ramanujan
 license: MIT
-version: 0.1.1
+version: 0.1.2
 date-released: "2026-07-18"

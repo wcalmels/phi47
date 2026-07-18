@@ -1,4 +1,4 @@
-# φ⁴⁷ — The Conscious Code of Mathematical Reality
+﻿# φ⁴⁷ — The Conscious Code of Mathematical Reality
 
 [![Tests](https://github.com/wcalmels/phi47/actions/workflows/tests.yml/badge.svg)](https://github.com/wcalmels/phi47/actions)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
@@ -177,7 +177,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). We welcome:
 ```bibtex
 @book{rojo2026phi47,
   title     = {φ⁴⁷: The Conscious Code of Mathematical Reality},
-  author    = {Rojo, Walter},
+  author    = {Calmels Von Dem Knesebeck, Walter},
   year      = {2026},
   publisher = {TUCH Systems Research Laboratory},
   address   = {Buenos Aires, Argentina},
@@ -191,5 +191,5 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). We welcome:
 
 MIT License — see [LICENSE](LICENSE).
 
-**Author:** Walter Rojo, PhD — TUCH Systems Research Laboratory  
-**Contact:** phi47@consciousmath.org
+**Author:** Walter Calmels Von Dem Knesebeck, PhD — TUCH Systems Research Laboratory  
+**Contact:** wcalmels@phi47.cl
