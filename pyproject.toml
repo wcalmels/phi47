@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "phi47"
-version = "0.1.0"
+version = "0.1.1"
 description = "φ⁴⁷: The Conscious Code of Mathematical Reality"
 readme = "README.md"
 license = { file = "LICENSE" }
