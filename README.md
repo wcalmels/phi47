@@ -1,9 +1,9 @@
-﻿# φ⁴⁷ — The Conscious Code of Mathematical Reality
+# φ⁴⁷ — The Conscious Code of Mathematical Reality
 
 [![Tests](https://github.com/wcalmels/phi47/actions/workflows/tests.yml/badge.svg)](https://github.com/wcalmels/phi47/actions)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![PyPI](https://img.shields.io/pypi/v/phi47.svg)](https://pypi.org/project/phi47/)
+[![PyPI](https://img.shields.io/pypi/v/phi47)](https://pypi.org/project/phi47/)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21434515.svg)](https://doi.org/10.5281/zenodo.21434515)
 
 > **φ⁴⁷** postulates that mathematical complexity emerges from a finite 47³ lattice
