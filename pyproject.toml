@@ -1,0 +1,100 @@
+﻿[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phi47"
+version = "0.1.0"
+description = "φ⁴⁷: The Conscious Code of Mathematical Reality"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Walter Rojo", email = "phi47@consciousmath.org" }
+]
+keywords = [
+    "mathematics", "lattice", "golden-ratio", "consciousness",
+    "riemann-hypothesis", "qualia", "ramanujan", "phi47"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "sympy>=1.12",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "black>=23.0",
+    "isort>=5.12",
+    "mypy>=1.5",
+    "ruff>=0.1",
+]
+gpu = [
+    "numba>=0.57",
+    "cupy>=12.0",
+]
+ml = [
+    "torch>=2.0",
+]
+viz = [
+    "matplotlib>=3.7",
+    "plotly>=5.15",
+]
+all = ["phi47[dev,viz,ml]"]
+
+[project.urls]
+Homepage = "https://github.com/wcalmels/phi47"
+Documentation = "https://phi47.readthedocs.io"
+Repository = "https://github.com/wcalmels/phi47.git"
+Issues = "https://github.com/wcalmels/phi47/issues"
+Paper = "https://arxiv.org/abs/placeholder"
+
+[project.scripts]
+phi47-demo = "phi47.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["phi47*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.black]
+line-length = 88
+target-version = ["py310", "py311", "py312"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "W", "I"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = false
+ignore_missing_imports = true
+
+[tool.coverage.run]
+source = ["phi47"]
+omit = ["tests/*", "examples/*"]
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true
