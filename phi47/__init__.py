@@ -21,11 +21,11 @@ True
 True
 """
 
+from phi47.consciousness.phi_measure import phi_measure
+from phi47.core.constants import PHI, TAU_STAR, N
 from phi47.core.lattice import Phi47Lattice
 from phi47.core.tau_star import tau_star, tau_star_batch
-from phi47.core.constants import PHI, N, TAU_STAR
-from phi47.qualia.engine import QualiaEngine, Quale, QualiaType
-from phi47.consciousness.phi_measure import phi_measure
+from phi47.qualia.engine import Quale, QualiaEngine, QualiaType
 
 __version__ = "0.1.0"
 __author__ = "Walter Rojo"

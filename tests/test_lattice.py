@@ -5,11 +5,11 @@ Tests for phi47.core.lattice — the central Re=1/2 property and core invariants
 import numpy as np
 import pytest
 
+from phi47.core.constants import RE_HALF_TOLERANCE
 from phi47.core.lattice import Phi47Lattice
-from phi47.core.constants import PHI, RE_HALF_TOLERANCE
-
 
 # ── Fixtures ───────────────────────────────────────────────────────────────────
+
 
 @pytest.fixture(scope="module")
 def small_lattice():
@@ -24,6 +24,7 @@ def medium_lattice():
 
 
 # ── Construction ───────────────────────────────────────────────────────────────
+
 
 class TestConstruction:
 
@@ -50,8 +51,9 @@ class TestConstruction:
         for dim in [5, 7, 11]:
             lat = Phi47Lattice(dim=dim).build()
             expected = dim * (dim + 1) * (dim + 2) // 6
-            assert lat.n_active == expected, \
-                f"dim={dim}: expected {expected}, got {lat.n_active}"
+            assert (
+                lat.n_active == expected
+            ), f"dim={dim}: expected {expected}, got {lat.n_active}"
 
     def test_inactive_nodes_are_zero(self, small_lattice):
         dim = small_lattice.dim
@@ -63,6 +65,7 @@ class TestConstruction:
 
 
 # ── The Central Property: Re = 1/2 ────────────────────────────────────────────
+
 
 class TestRealPartHalf:
     """
@@ -77,9 +80,7 @@ class TestRealPartHalf:
         assert len(active) > 0
         re_vals = np.real(active)
         np.testing.assert_allclose(
-            re_vals, 0.5,
-            atol=RE_HALF_TOLERANCE,
-            err_msg=f"Re ≠ 1/2 for dim={dim}"
+            re_vals, 0.5, atol=RE_HALF_TOLERANCE, err_msg=f"Re ≠ 1/2 for dim={dim}"
         )
 
     def test_mean_real_attribute(self, small_lattice):
@@ -97,6 +98,7 @@ class TestRealPartHalf:
 
 # ── Holographic Sub-grid ───────────────────────────────────────────────────────
 
+
 class TestHolography:
 
     def test_subgrid_dim_is_half(self, medium_lattice):
@@ -113,6 +115,7 @@ class TestHolography:
 
 
 # ── Summary & Energy ──────────────────────────────────────────────────────────
+
 
 class TestSummaryAndEnergy:
 
@@ -135,6 +138,7 @@ class TestSummaryAndEnergy:
 
 
 # ── Reproducibility ────────────────────────────────────────────────────────────
+
 
 class TestReproducibility:
 

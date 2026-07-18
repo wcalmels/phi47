@@ -20,13 +20,13 @@ Properties
 
 from __future__ import annotations
 
-import math
 import cmath
+import math
 from functools import lru_cache
 
 import numpy as np
 
-from .constants import N, PHI, TAU_STAR
+from .constants import PHI, N
 
 
 @lru_cache(maxsize=65536)

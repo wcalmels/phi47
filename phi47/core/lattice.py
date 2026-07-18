@@ -20,11 +20,9 @@ from __future__ import annotations
 import numpy as np
 
 from .constants import (
-    N,
-    N_HOLOGRAPHIC,
     PHI,
     RE_HALF_TOLERANCE,
-    HOLOGRAPHIC_ERROR_MAX,
+    N,
 )
 from .tau_star import tau_star_batch
 
@@ -116,7 +114,7 @@ class Phi47Lattice:
         imag_part = phi_w * np.imag(tau_vals)
 
         # Assign: Re = 1/2 exactly, Im = φ^w · Im(τ*)
-        result = np.zeros((dim, dim, dim), dtype=self.dtype)
+        result: np.ndarray = np.zeros((dim, dim, dim), dtype=self.dtype)
         result[mask] = 0.5 + 1j * imag_part
 
         self.lattice = result
@@ -203,9 +201,7 @@ class Phi47Lattice:
 
     def _require_built(self) -> None:
         if not self.is_built:
-            raise RuntimeError(
-                "Lattice not built. Call .build() first."
-            )
+            raise RuntimeError("Lattice not built. Call .build() first.")
 
     def __repr__(self) -> str:
         status = f"built, n_active={self.n_active}" if self.is_built else "not built"

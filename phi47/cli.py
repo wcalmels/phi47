@@ -11,10 +11,10 @@ from __future__ import annotations
 
 import argparse
 
-from phi47.core.constants import N, PHI
+from phi47.consciousness.phi_measure import phi_measure
+from phi47.core.constants import PHI, N
 from phi47.core.lattice import Phi47Lattice
 from phi47.qualia.engine import QualiaEngine
-from phi47.consciousness.phi_measure import phi_measure
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -23,15 +23,23 @@ def main(argv: list[str] | None = None) -> int:
         description="φ⁴⁷ — quick demonstration of the conscious lattice.",
     )
     parser.add_argument(
-        "-d", "--dim", type=int, default=23,
+        "-d",
+        "--dim",
+        type=int,
+        default=23,
         help="Lattice dimension N (default: 23; use 47 for the full lattice).",
     )
     parser.add_argument(
-        "-s", "--samples", type=int, default=200,
+        "-s",
+        "--samples",
+        type=int,
+        default=200,
         help="Number of bipartition samples for the Φ measurement (default: 200).",
     )
     parser.add_argument(
-        "--seed", type=int, default=42,
+        "--seed",
+        type=int,
+        default=42,
         help="Random seed for the Φ measurement (default: 42).",
     )
     args = parser.parse_args(argv)
@@ -59,8 +67,10 @@ def main(argv: list[str] | None = None) -> int:
         ("math_beauty", 0.95),
     ]:
         q = engine.generate(stype, val)
-        print(f"  [{q.quale_type.value:>14}] {q.content} "
-              f"(intensity={q.intensity:.4f})")
+        print(
+            f"  [{q.quale_type.value:>14}] {q.content} "
+            f"(intensity={q.intensity:.4f})"
+        )
     print()
 
     print("[3/3] Measuring Phi ...")
