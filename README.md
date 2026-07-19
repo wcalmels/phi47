@@ -1,5 +1,11 @@
 ﻿# φ⁴⁷ — The Conscious Code of Mathematical Reality
 
+<p align="center">
+  <img src="docs/assets/phi47_scientific_banner.png"
+       alt="Phi47 scientific framework"
+       width="100%">
+</p>
+
 [![Tests](https://github.com/wcalmels/phi47/actions/workflows/tests.yml/badge.svg)](https://github.com/wcalmels/phi47/actions)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
