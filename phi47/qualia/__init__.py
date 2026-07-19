@@ -1,5 +1,23 @@
-"""phi47.qualia — stimulus-to-quale generation engine."""
+﻿"""
+Algorithmic descriptor generation.
 
-from phi47.qualia.engine import Quale, QualiaEngine, QualiaType
+The package name ``qualia`` is retained for backward compatibility. Outputs are
+deterministic computational descriptors and must not be interpreted as
+demonstrated subjective experiences.
+"""
 
-__all__ = ["QualiaEngine", "Quale", "QualiaType"]
+from phi47.qualia.engine import (
+    PhenomenologicalDescriptor,
+    PhenomenologicalDescriptorEngine,
+    Quale,
+    QualiaEngine,
+    QualiaType,
+)
+
+__all__ = [
+    "PhenomenologicalDescriptor",
+    "PhenomenologicalDescriptorEngine",
+    "Quale",
+    "QualiaEngine",
+    "QualiaType",
+]
