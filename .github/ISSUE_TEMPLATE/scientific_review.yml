@@ -1,0 +1,69 @@
+name: Scientific validation or criticism
+description: Report a mathematical, numerical, methodological, or interpretive issue
+title: "[Scientific review]: "
+labels:
+  - scientific-review
+body:
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Mathematical derivation
+        - Numerical implementation
+        - Reproducibility
+        - Dimensional consistency
+        - Statistical methodology
+        - Empirical interpretation
+        - Claim classification
+        - Citation or prior work
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: Relevant file, equation, function, or claim
+      placeholder: "README section, module path, equation number, or commit"
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue
+    attributes:
+      label: Technical concern
+      description: State the issue precisely.
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting analysis or evidence
+      description: Include derivations, references, calculations, code, or data.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction procedure
+      description: Provide commands, parameters, seeds, and expected outputs.
+
+  - type: textarea
+    id: correction
+    attributes:
+      label: Proposed correction or alternative interpretation
+
+  - type: checkboxes
+    id: classification
+    attributes:
+      label: Scientific classification
+      options:
+        - label: The report distinguishes verified results from hypotheses.
+          required: true
+        - label: Uncertainty and limitations are stated.
+          required: true
+        - label: Sources are cited when external evidence is used.
+          required: false
