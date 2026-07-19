@@ -17,7 +17,6 @@ from __future__ import annotations
 
 from .kernel import (
     clear_kernel_cache,
-    kernel_cache_info,
     phi47_kernel,
     phi47_kernel_batch,
 )
@@ -48,4 +47,3 @@ __all__ = [
     "clear_cache",
     "cache_info",
 ]
-

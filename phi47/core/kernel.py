@@ -31,7 +31,7 @@ from functools import lru_cache
 
 import numpy as np
 
-from .constants import N, PHI
+from .constants import PHI, N
 
 
 @lru_cache(maxsize=65536)

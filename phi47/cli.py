@@ -13,8 +13,8 @@ from __future__ import annotations
 import argparse
 
 from phi47 import (
-    N,
     PHI,
+    N,
     PhenomenologicalDescriptorEngine,
     Phi47Lattice,
     integration_proxy,
@@ -24,9 +24,7 @@ from phi47 import (
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="phi47-demo",
-        description=(
-            "φ⁴⁷ — finite golden-ratio lattice research demonstration."
-        ),
+        description=("φ⁴⁷ — finite golden-ratio lattice research demonstration."),
     )
     parser.add_argument(
         "-d",

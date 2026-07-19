@@ -206,4 +206,3 @@ class Phi47Lattice:
     def __repr__(self) -> str:
         status = f"built, n_active={self.n_active}" if self.is_built else "not built"
         return f"Phi47Lattice(dim={self.dim}, {status})"
-

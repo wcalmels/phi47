@@ -141,11 +141,7 @@ def _integration_exact(probabilities: np.ndarray, dim: int) -> float:
         left = left / left.sum()
         right = right / right.sum()
 
-        entropy_difference = (
-            _entropy(left)
-            + _entropy(right)
-            - total_entropy
-        )
+        entropy_difference = _entropy(left) + _entropy(right) - total_entropy
 
         weight = PHI ** (-int(mask.sum()) / dim)
         score = abs(entropy_difference) * weight
@@ -193,11 +189,7 @@ def _integration_fast(
         left = left / left_sum
         right = right / right_sum
 
-        entropy_difference = (
-            _entropy(left)
-            + _entropy(right)
-            - total_entropy
-        )
+        entropy_difference = _entropy(left) + _entropy(right) - total_entropy
 
         weight = PHI ** (-split / dim)
         score = abs(entropy_difference) * weight
