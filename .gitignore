@@ -50,3 +50,6 @@ desktop.ini
 # ── Environment / secrets ─────────────────────────────────────────────────────
 .env
 .env.*
+
+# MkDocs build output
+site/
