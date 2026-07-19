@@ -1,8 +1,7 @@
-﻿"""
+"""
 Backward-compatible interface for the historical ``phi_measure`` module.
 
 The canonical public API is ``integration_proxy``.
-
 The returned value is a project-defined entropy-based integration score. It is
 not a validated measurement of consciousness and is not a complete
 implementation of Integrated Information Theory.
@@ -32,4 +31,8 @@ __all__ = [
     "Method",
     "integration_proxy",
     "phi_measure",
+    "_entropy",
+    "_phi_exact",
+    "_phi_fast",
+    "_phi_entropy",
 ]
