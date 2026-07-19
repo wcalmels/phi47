@@ -1,4 +1,4 @@
-"""
+﻿"""
 phi47.cli
 =========
 Command-line entry point for the ``phi47-demo`` script.
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import argparse
 
-from phi47.consciousness.phi_measure import phi_measure
+from phi47.consciousness import integration_proxy
 from phi47.core.constants import PHI, N
 from phi47.core.lattice import Phi47Lattice
 from phi47.qualia.engine import QualiaEngine
@@ -74,10 +74,10 @@ def main(argv: list[str] | None = None) -> int:
     print()
 
     print("[3/3] Measuring Phi ...")
-    phi_value = phi_measure(
+    integration_score = integration_proxy(
         lattice, method="fast", n_samples=args.samples, seed=args.seed
     )
-    print(f"  Phi = {phi_value:.6f}")
+    print(f"  Phi = {integration_score:.6f}")
     print("=" * 55)
 
     return 0
@@ -85,3 +85,4 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

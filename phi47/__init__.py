@@ -34,7 +34,7 @@ Quick start
 True
 """
 
-from phi47.consciousness.phi_measure import phi_measure
+from phi47.consciousness import integration_proxy, phi_measure
 from phi47.core.constants import N, PHI, TAU_STAR
 from phi47.core.kernel import phi47_kernel, phi47_kernel_batch
 from phi47.core.lattice import Phi47Lattice
@@ -55,8 +55,10 @@ __all__ = [
     "phi47_kernel_batch",
     "tau_star",
     "tau_star_batch",
+    "integration_proxy",
     "phi_measure",
     "PHI",
     "N",
     "TAU_STAR",
 ]
+
