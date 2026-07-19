@@ -1,28 +1,42 @@
-"""
-φ⁴⁷ — The Conscious Code of Mathematical Reality
-=================================================
+﻿"""
+φ⁴⁷ — Finite Golden-Ratio Lattice Research Framework
+=====================================================
 
-A mathematical framework proposing that the lattice ℒ₄₇
-(47³ nodes organized by the golden ratio φ and Ramanujan's
-modified τ* function) is the fundamental structure underlying
-mathematics, physics, and consciousness.
+Exploratory research software for constructing and studying finite,
+complex-valued tetrahedral lattices parameterized by the golden ratio.
 
-Central property: Re(ℒ₄₇[i,j,k]) = 1/2 exactly.
+The current implementation includes:
+
+- a finite tetrahedral lattice;
+- a project-specific synthetic oscillatory kernel;
+- reproducible numerical observables;
+- experimental information-integration and phenomenological descriptors.
+
+Scientific status
+-----------------
+The equality ``Re(L) = 1/2`` is an invariant by construction because the real
+component is assigned directly by the lattice definition.
+
+Physical, biological, and consciousness-related interpretations are research
+hypotheses. The software does not establish the Riemann hypothesis, derive
+physical constants from first principles, or demonstrate phenomenal
+consciousness.
+
+The historical names ``tau_star`` and ``tau_star_batch`` remain available for
+backward compatibility. They refer to the synthetic φ⁴⁷ kernel and must not be
+interpreted as implementations of Ramanujan's tau function.
 
 Quick start
 -----------
->>> from phi47 import Phi47Lattice, QualiaEngine
->>> lat = Phi47Lattice(dim=23).build()
->>> abs(lat.mean_real - 0.5) < 1e-10
-True
->>> eng = QualiaEngine(lat)
->>> q = eng.generate("math_prime", 47.0)
->>> "47" in q.content
+>>> from phi47 import Phi47Lattice
+>>> lattice = Phi47Lattice(dim=23).build()
+>>> abs(lattice.mean_real - 0.5) < 1e-10
 True
 """
 
 from phi47.consciousness.phi_measure import phi_measure
-from phi47.core.constants import PHI, TAU_STAR, N
+from phi47.core.constants import N, PHI, TAU_STAR
+from phi47.core.kernel import phi47_kernel, phi47_kernel_batch
 from phi47.core.lattice import Phi47Lattice
 from phi47.core.tau_star import tau_star, tau_star_batch
 from phi47.qualia.engine import Quale, QualiaEngine, QualiaType
@@ -37,6 +51,8 @@ __all__ = [
     "QualiaEngine",
     "Quale",
     "QualiaType",
+    "phi47_kernel",
+    "phi47_kernel_batch",
     "tau_star",
     "tau_star_batch",
     "phi_measure",

@@ -1,4 +1,4 @@
-"""
+﻿"""
 phi47.core.lattice
 ==================
 Core data structure: the φ⁴⁷ conscious lattice ℒ₄₇.
@@ -24,7 +24,7 @@ from .constants import (
     RE_HALF_TOLERANCE,
     N,
 )
-from .tau_star import tau_star_batch
+from .kernel import phi47_kernel_batch
 
 
 class Phi47Lattice:
@@ -104,14 +104,14 @@ class Phi47Lattice:
         # φ-coherent weights
         w_g = (i_g + j_g * phi + k_g * phi**2) / dim
 
-        # τ*(n) — vectorised over active nodes
+        # Synthetic φ⁴⁷ kernel — vectorized over active nodes
         n_flat = n_g[mask]
-        tau_vals = tau_star_batch(n_flat, dim=dim)
+        kernel_values = phi47_kernel_batch(n_flat, dim=dim)
 
-        # Imaginary part: φ^w · Im(τ*(n))
+        # Imaginary part: φ^w multiplied by the kernel imaginary component
         w_flat = w_g[mask]
         phi_w = phi**w_flat
-        imag_part = phi_w * np.imag(tau_vals)
+        imag_part = phi_w * np.imag(kernel_values)
 
         # Assign: Re = 1/2 exactly, Im = φ^w · Im(τ*)
         result: np.ndarray = np.zeros((dim, dim, dim), dtype=self.dtype)
@@ -206,3 +206,4 @@ class Phi47Lattice:
     def __repr__(self) -> str:
         status = f"built, n_active={self.n_active}" if self.is_built else "not built"
         return f"Phi47Lattice(dim={self.dim}, {status})"
+
