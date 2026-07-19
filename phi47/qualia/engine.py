@@ -1,21 +1,25 @@
-"""
+﻿"""
 phi47.qualia.engine
 ===================
-QualiaEngine: transform physical stimuli into quantifiable qualia.
 
-The qualia generation chain (Qualia Engine, Cap. 11):
+Algorithmic phenomenological descriptor generation for φ⁴⁷ lattice states.
 
-    Stimulus
-        ↓  [φ^(47/36) · τ* encoding]
-    Microtubule lattice (47×36)
-        ↓  [m_ν = 0.09 eV]
-    Quantum neutrino transmission
-        ↓  [φ^(47/12) orbital collapse]
-    Hydrogen orbital deformation
-        ↓  [τ* holographic projection]
-    Quale — quantifiable subjective experience
+Scientific status
+-----------------
+This module maps numerical stimulus values to deterministic labels, normalized
+complex vectors, and bounded intensity scores.
 
-All qualia satisfy Re(quale_vector) ≈ 1/2 (inherited from ℒ₄₇).
+It does not demonstrate:
+
+- phenomenal consciousness;
+- subjective experience;
+- biological microtubule processing;
+- neutrino-mediated cognition;
+- hydrogen-orbital collapse in neural systems;
+- holographic projection as a verified physical mechanism.
+
+The historical names ``Quale`` and ``QualiaEngine`` are retained as aliases for
+backward compatibility.
 """
 
 from __future__ import annotations
@@ -36,11 +40,15 @@ from phi47.core.constants import (
 )
 from phi47.core.lattice import Phi47Lattice
 
-# ── Quale Type Enum ────────────────────────────────────────────────────────────
-
 
 class QualiaType(Enum):
-    """All supported quale modalities."""
+    """
+    Supported descriptor categories.
+
+    The historical enum name is retained for compatibility. Enum values describe
+    software output categories and must not be interpreted as demonstrated
+    subjective modalities.
+    """
 
     VISUAL_COLOR = "visual_color"
     AUDITORY_TONE = "auditory_tone"
@@ -54,29 +62,34 @@ class QualiaType(Enum):
     COGNITIVE = "cognitive"
 
 
-# ── Quale Dataclass ────────────────────────────────────────────────────────────
-
-
 @dataclass
-class Quale:
+class PhenomenologicalDescriptor:
     """
-    A single quantifiable quale.
+    Deterministic descriptor generated from an input stimulus.
 
     Attributes
     ----------
-    quale_type : QualiaType
-    content : str
-        Human-readable description of the subjective experience.
-    intensity : float
-        Quale intensity in [0, 1].
-    vector : np.ndarray, shape (2,)
-        φ⁴⁷ representation [Re, Im] of the quale.
-    re_value : float
-        Real part of the quale vector — always ≈ 0.5 (inherited from ℒ₄₇).
-    timestamp : float
-        Unix timestamp of creation.
-    stimulus_type : str
-    stimulus_value : float
+    quale_type:
+        Historical category field retained for compatibility.
+    content:
+        Human-readable software-generated label.
+    intensity:
+        Bounded numerical score in the interval [0, 1].
+    vector:
+        Two-component numerical representation [real, imaginary].
+    re_value:
+        Real component of the generated normalized complex value.
+    timestamp:
+        Unix timestamp at generation.
+    stimulus_type:
+        Input category.
+    stimulus_value:
+        Input numerical value.
+
+    Notes
+    -----
+    An instance of this class is a computational record. It is not evidence of
+    phenomenal experience or consciousness.
     """
 
     quale_type: QualiaType
@@ -103,167 +116,190 @@ class Quale:
         }
 
 
-# ── Content Templates ──────────────────────────────────────────────────────────
-
 _VISUAL_CONTENT: dict[tuple[float, float], str] = {
-    (620, 750): "The intense redness of red",
-    (590, 620): "The warm, burning orange",
-    (560, 590): "The bright yellowness of yellow",
-    (500, 560): "The cool freshness of green",
-    (450, 500): "The deep coldness of blue",
-    (380, 450): "The mysterious depth of violet",
+    (620, 750): "Red-spectrum descriptor",
+    (590, 620): "Orange-spectrum descriptor",
+    (560, 590): "Yellow-spectrum descriptor",
+    (500, 560): "Green-spectrum descriptor",
+    (450, 500): "Blue-spectrum descriptor",
+    (380, 450): "Violet-spectrum descriptor",
 }
 
 _AUDITORY_CONTENT: dict[tuple[float, float], str] = {
-    (20, 200): "The deep rumbling of bass",
-    (200, 2000): "The warmth of the midrange",
-    (2000, 20000): "The brilliant shimmer of treble",
+    (20, 200): "Low-frequency auditory descriptor",
+    (200, 2000): "Mid-frequency auditory descriptor",
+    (2000, 20000): "High-frequency auditory descriptor",
 }
 
 _THERMAL_CONTENT: dict[tuple[float, float], str] = {
-    (-40, 0): "The sharp bite of freezing cold",
-    (0, 20): "The unpleasant chill",
-    (20, 37): "The comfortable warmth",
-    (37, 55): "The burning heat",
-    (55, 200): "The unbearable scorching",
+    (-40, 0): "Sub-zero thermal descriptor",
+    (0, 20): "Low-temperature descriptor",
+    (20, 37): "Moderate-temperature descriptor",
+    (37, 55): "High-temperature descriptor",
+    (55, 200): "Extreme-temperature descriptor",
 }
 
-_MATH_PRIME_CONTENT = "The irreducible purity of prime {n}"
-_MATH_BEAUTY_CONTENT = "Mathematical beauty — φ-coherence {v:.3f}"
+_MATH_PRIME_CONTENT = "Prime-number descriptor for {n}"
+_MATH_BEAUTY_CONTENT = "Mathematical-pattern descriptor — φ-score {v:.3f}"
 
 
 def _visual_content(wavelength_nm: float) -> str:
-    for (lo, hi), text in _VISUAL_CONTENT.items():
-        if lo <= wavelength_nm < hi:
+    for (lower, upper), text in _VISUAL_CONTENT.items():
+        if lower <= wavelength_nm < upper:
             return text
-    return f"The quale of light at {wavelength_nm:.0f} nm"
+    return f"Optical descriptor at {wavelength_nm:.0f} nm"
 
 
-def _auditory_content(freq_hz: float) -> str:
-    for (lo, hi), text in _AUDITORY_CONTENT.items():
-        if lo <= freq_hz < hi:
+def _auditory_content(frequency_hz: float) -> str:
+    for (lower, upper), text in _AUDITORY_CONTENT.items():
+        if lower <= frequency_hz < upper:
             return text
-    return f"The quale of sound at {freq_hz:.0f} Hz"
+    return f"Auditory descriptor at {frequency_hz:.0f} Hz"
 
 
-def _thermal_content(temp_c: float) -> str:
-    for (lo, hi), text in _THERMAL_CONTENT.items():
-        if lo <= temp_c < hi:
+def _thermal_content(temperature_c: float) -> str:
+    for (lower, upper), text in _THERMAL_CONTENT.items():
+        if lower <= temperature_c < upper:
             return text
-    return f"The thermal quale at {temp_c:.1f} °C"
+    return f"Thermal descriptor at {temperature_c:.1f} °C"
 
 
-# ── Qualia Engine ──────────────────────────────────────────────────────────────
-
-
-class QualiaEngine:
+class PhenomenologicalDescriptorEngine:
     """
-    Transform physical stimuli into quantifiable qualia via the φ⁴⁷ chain.
+    Convert numerical stimuli into deterministic computational descriptors.
 
     Parameters
     ----------
-    lattice : Phi47Lattice
-        The conscious lattice (must be built).
+    lattice:
+        A built ``Phi47Lattice``.
 
-    Examples
-    --------
-    >>> from phi47 import Phi47Lattice, QualiaEngine
-    >>> lat = Phi47Lattice(dim=11).build()
-    >>> eng = QualiaEngine(lat)
-    >>> q = eng.generate("visual_color", 700.0)
-    >>> 0.0 <= q.intensity <= 1.0
-    True
-    >>> abs(q.re_value - 0.5) < 0.5        # relaxed for demo
-    True
+    Notes
+    -----
+    The transformation is a project-defined numerical pipeline. Constants and
+    intermediate variables are computational parameters, not validated
+    biological or quantum mechanisms.
     """
 
     def __init__(self, lattice: Phi47Lattice) -> None:
+        if not isinstance(lattice, Phi47Lattice):
+            raise TypeError("lattice must be a Phi47Lattice instance")
         if not lattice.is_built:
-            raise ValueError("Lattice must be built before creating QualiaEngine.")
+            raise ValueError(
+                "Lattice must be built before creating the descriptor engine."
+            )
+
         self._lattice = lattice
-        self._history: list[Quale] = []
+        self._history: list[PhenomenologicalDescriptor] = []
 
-    # ── Public API ─────────────────────────────────────────────────────────────
-
-    def generate(self, stimulus_type: str, value: float) -> Quale:
+    def generate(
+        self,
+        stimulus_type: str,
+        value: float,
+    ) -> PhenomenologicalDescriptor:
         """
-        Generate a quale from a physical stimulus.
+        Generate a deterministic descriptor from a numerical stimulus.
 
         Parameters
         ----------
-        stimulus_type : str
-            One of: ``"visual_color"``, ``"auditory_tone"``, ``"thermal"``,
-            ``"pain"``, ``"math_prime"``, ``"math_beauty"``, ``"cognitive"``.
-        value : float
-            Stimulus magnitude in natural units:
-            - ``visual_color``: wavelength in nm (380–750)
-            - ``auditory_tone``: frequency in Hz (20–20000)
-            - ``thermal``: temperature in °C
-            - ``pain``: scale 0–10
-            - ``math_prime``: the prime number itself
-            - ``math_beauty``: aesthetic score 0–1
-            - ``cognitive``: abstract value
+        stimulus_type:
+            Descriptor category.
+        value:
+            Numerical stimulus value.
 
         Returns
         -------
-        Quale
+        PhenomenologicalDescriptor
+            Software-generated descriptor and numerical representation.
         """
-        quale = self._qualia_chain(stimulus_type, value)
-        self._history.append(quale)
-        return quale
+        descriptor = self._descriptor_chain(stimulus_type, value)
+        self._history.append(descriptor)
+        return descriptor
 
     @property
-    def history(self) -> list[Quale]:
-        """List of all generated qualia (most recent last)."""
+    def history(self) -> list[PhenomenologicalDescriptor]:
+        """Return generated descriptors in creation order."""
         return list(self._history)
 
     def clear_history(self) -> None:
+        """Clear the in-memory descriptor history."""
         self._history.clear()
 
-    # ── Internal chain ─────────────────────────────────────────────────────────
+    def _descriptor_chain(
+        self,
+        stimulus_type: str,
+        value: float,
+    ) -> PhenomenologicalDescriptor:
+        """
+        Execute the project-defined four-stage numerical transformation.
 
-    def _qualia_chain(self, stimulus_type: str, value: float) -> Quale:
-        """Execute the 4-step qualia generation chain."""
+        The stage names describe computational operations only.
+        """
         dim = self._lattice.dim
 
-        # Step 1: Microtubule lattice encoding  φ^(47/36) · τ*
+        # Stage 1: deterministic complex scaling.
         encoded = value * PHI_47_36 * TAU_STAR
 
-        # Step 2: Neutrino quantum transmission  m_ν = 0.09 eV
-        F_nu = (
+        # Stage 2: scalar projection using a historical project constant.
+        projected_scalar = (
             abs(encoded)
             * NEUTRINO_MASS_EV
             * math.cos(math.atan2(encoded.imag, encoded.real))
         )
 
-        # Step 3: Hydrogen orbital collapse  φ^(47/12)
-        orbital = complex(math.cos(F_nu * PHI_47_12), math.sin(F_nu * PHI_47_12))
+        # Stage 3: map the scalar to a unit-circle complex phase.
+        phase_value = complex(
+            math.cos(projected_scalar * PHI_47_12),
+            math.sin(projected_scalar * PHI_47_12),
+        )
 
-        # Step 4: τ* holographic projection
-        raw = orbital * TAU_STAR
+        # Stage 4: apply the historical complex project constant and normalize.
+        raw = phase_value * TAU_STAR
         norm = abs(raw) if abs(raw) > 1e-15 else 1.0
-        quale_c = raw / norm  # Unit complex number
+        normalized = raw / norm
 
-        # Intensity from φ-energy
-        phi_e = PHI ** (abs(value) / dim) if value != 0 else 1.0
-        intensity = np.clip(abs(quale_c) * phi_e * 0.5, 0.0, 1.0)
+        # Project-defined bounded intensity score.
+        phi_weight = PHI ** (abs(value) / dim) if value != 0 else 1.0
+        intensity = np.clip(
+            abs(normalized) * phi_weight * 0.5,
+            0.0,
+            1.0,
+        )
 
-        # Build quale
-        qtype, content = self._classify(stimulus_type, value, float(intensity))
-        vector = np.array([quale_c.real, quale_c.imag])
+        descriptor_type, content = self._classify(
+            stimulus_type,
+            value,
+            float(intensity),
+        )
 
-        return Quale(
-            quale_type=qtype,
+        vector = np.array(
+            [normalized.real, normalized.imag],
+            dtype=float,
+        )
+
+        return PhenomenologicalDescriptor(
+            quale_type=descriptor_type,
             content=content,
             intensity=float(intensity),
             vector=vector,
-            re_value=float(quale_c.real),
+            re_value=float(normalized.real),
             stimulus_type=stimulus_type,
             stimulus_value=value,
         )
 
+    # Historical private method retained for downstream compatibility.
+    def _qualia_chain(
+        self,
+        stimulus_type: str,
+        value: float,
+    ) -> PhenomenologicalDescriptor:
+        """Compatibility alias for the historical private transformation."""
+        return self._descriptor_chain(stimulus_type, value)
+
     def _classify(
-        self, stimulus_type: str, value: float, intensity: float
+        self,
+        stimulus_type: str,
+        value: float,
+        intensity: float,
     ) -> tuple[QualiaType, str]:
         match stimulus_type:
             case "visual_color":
@@ -273,17 +309,51 @@ class QualiaEngine:
             case "thermal":
                 return QualiaType.THERMAL, _thermal_content(value)
             case "pain":
-                return QualiaType.PAIN, f"Pain intensity {value:.1f}/10"
+                return (
+                    QualiaType.PAIN,
+                    f"Pain-scale descriptor {value:.1f}/10",
+                )
             case "math_prime":
-                return QualiaType.MATH_PRIME, _MATH_PRIME_CONTENT.format(n=int(value))
+                return (
+                    QualiaType.MATH_PRIME,
+                    _MATH_PRIME_CONTENT.format(n=int(value)),
+                )
             case "math_beauty":
-                return QualiaType.MATH_BEAUTY, _MATH_BEAUTY_CONTENT.format(v=value)
+                return (
+                    QualiaType.MATH_BEAUTY,
+                    _MATH_BEAUTY_CONTENT.format(v=value),
+                )
             case "emotion_joy":
-                return QualiaType.EMOTION_JOY, f"Joy — intensity {intensity:.2f}"
+                return (
+                    QualiaType.EMOTION_JOY,
+                    f"Joy-category descriptor — intensity {intensity:.2f}",
+                )
+            case "emotion_fear":
+                return (
+                    QualiaType.EMOTION_FEAR,
+                    f"Fear-category descriptor — intensity {intensity:.2f}",
+                )
             case "cognitive":
-                return QualiaType.COGNITIVE, f"Cognitive quale — value {value:.4f}"
+                return (
+                    QualiaType.COGNITIVE,
+                    f"Cognitive descriptor — value {value:.4f}",
+                )
             case _:
                 return (
                     QualiaType.COGNITIVE,
-                    f"Unknown stimulus: {stimulus_type}={value}",
+                    f"Unrecognized stimulus: {stimulus_type}={value}",
                 )
+
+
+# Historical API aliases.
+Quale = PhenomenologicalDescriptor
+QualiaEngine = PhenomenologicalDescriptorEngine
+
+
+__all__ = [
+    "QualiaType",
+    "PhenomenologicalDescriptor",
+    "PhenomenologicalDescriptorEngine",
+    "Quale",
+    "QualiaEngine",
+]

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security report
+    url: mailto:wcalmels@phi47.cl
+    about: Report security vulnerabilities privately.
+  - name: Scientific status
+    url: https://github.com/wcalmels/phi47/blob/main/docs/science/SCIENTIFIC_STATUS.md
+    about: Review the classification of claims before opening a scientific issue.

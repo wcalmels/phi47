@@ -1,0 +1,49 @@
+site_name: Phi47
+site_description: Scientific software framework for finite complex lattices and reproducible numerical experiments
+site_url: https://phi47.cl
+repo_url: https://github.com/wcalmels/phi47
+repo_name: wcalmels/phi47
+edit_uri: edit/scientific-revision-v0.2/docs/
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - footnotes
+  - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.superfences
+
+plugins:
+  - search
+
+nav:
+  - Home: index.md
+  - Getting started: getting-started.md
+  - Mathematical model: mathematical-model.md
+  - API reference: api-reference.md
+  - Scientific status: science/SCIENTIFIC_STATUS.md
+  - Validation roadmap: validation-roadmap.md
+  - Contributing: contributing.md
+  - Security: security.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/wcalmels
+    - icon: fontawesome/solid/globe
+      link: https://phi47.cl
+
+copyright: Copyright © 2026 Walter Calmels

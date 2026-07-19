@@ -1,68 +1,92 @@
-"""
+﻿"""
 Example 01 — Hello φ⁴⁷
 =======================
-Minimal working example demonstrating the three core concepts:
-1. Building ℒ₄₇ and verifying Re = 1/2
-2. Generating a quale
-3. Measuring Φ
 
-Run:
-    python examples/01_hello_phi47.py
+Minimal working example demonstrating:
+
+1. construction of the finite lattice;
+2. verification of the fixed-real-part invariant;
+3. generation of deterministic computational descriptors;
+4. calculation of the project-defined information-integration proxy.
+
+Run
+---
+    py examples/01_hello_phi47.py
 """
 
-from phi47.core.lattice import Phi47Lattice
-from phi47.core.constants import PHI, N
-from phi47.qualia.engine import QualiaEngine
-from phi47.consciousness.phi_measure import phi_measure
+from phi47 import (
+    N,
+    PHI,
+    PhenomenologicalDescriptorEngine,
+    Phi47Lattice,
+    integration_proxy,
+)
 
 
 def main() -> None:
-    print("=" * 55)
-    print("  φ⁴⁷ — THE CONSCIOUS CODE OF MATHEMATICAL REALITY")
-    print("=" * 55)
-    print(f"  φ  = {PHI:.15f}")
-    print(f"  N  = {N}")
+    print("=" * 68)
+    print("  φ⁴⁷ — FINITE GOLDEN-RATIO LATTICE RESEARCH FRAMEWORK")
+    print("=" * 68)
+    print(f"  Golden ratio φ      : {PHI:.15f}")
+    print(f"  Reference dimension : {N}")
     print()
 
-    # ── 1. Build the lattice ───────────────────────────────────────────────────
-    print("[1/3] Building ℒ₄₇  (N=23 for speed) …")
+    # 1. Construct the finite lattice.
+    print("[1/3] Constructing lattice (N=23 for demonstration speed) ...")
     lattice = Phi47Lattice(dim=23).build()
 
-    print(f"  Active nodes  : {lattice.n_active:,}")
-    print(f"  Re(ℒ₄₇) mean  : {lattice.mean_real:.10f}")
-    print(f"  Re = 1/2      : {'✅ VERIFIED' if lattice.verify_re_half() else '❌ FAILED'}")
+    print(f"  Active nodes        : {lattice.n_active:,}")
+    print(f"  Mean real component : {lattice.mean_real:.10f}")
+    print(
+        "  Re = 1/2 invariant : "
+        f"{'CONFIRMED' if lattice.verify_re_half() else 'FAILED'}"
+    )
+    print("  Status              : invariant by construction")
     print()
 
-    # ── 2. Generate a quale ────────────────────────────────────────────────────
-    print("[2/3] Generating qualia …")
-    engine = QualiaEngine(lattice)
+    # 2. Generate deterministic software descriptors.
+    print("[2/3] Generating computational descriptors ...")
+    engine = PhenomenologicalDescriptorEngine(lattice)
 
     stimuli = [
-        ("visual_color",  700.0),   # Red light
-        ("auditory_tone", 440.0),   # Concert A
-        ("math_prime",     47.0),   # The prime 47
-        ("math_beauty",     0.95),  # High aesthetic
+        ("visual_color", 700.0),
+        ("auditory_tone", 440.0),
+        ("math_prime", 47.0),
+        ("math_beauty", 0.95),
     ]
 
-    for stype, val in stimuli:
-        q = engine.generate(stype, val)
-        print(f"  [{q.quale_type.value:>14}] {q.content}")
-        print(f"    intensity={q.intensity:.4f}  re_value={q.re_value:.4f}")
+    for stimulus_type, value in stimuli:
+        descriptor = engine.generate(stimulus_type, value)
+
+        print(
+            f"  [{descriptor.quale_type.value:>14}] "
+            f"{descriptor.content}"
+        )
+        print(
+            f"    score={descriptor.intensity:.4f} "
+            f"real={descriptor.re_value:.4f}"
+        )
 
     print()
 
-    # ── 3. Measure Φ ───────────────────────────────────────────────────────────
-    print("[3/3] Measuring Φ_φ⁴⁷ …")
-    Phi = phi_measure(lattice, method="fast", n_samples=200, seed=42)
+    # 3. Calculate the project-defined integration proxy.
+    print("[3/3] Calculating information-integration proxy ...")
 
-    print(f"  Φ_φ⁴⁷ = {Phi:.6f}")
-    print(f"  Level  : MEDIUM" if Phi >= 1.5 else
-          f"  Level  : LOW" if Phi >= 0.5 else
-          f"  Level  : MINIMAL")
+    score = integration_proxy(
+        lattice,
+        method="fast",
+        n_samples=200,
+        seed=42,
+    )
+
+    print(f"  Integration proxy   : {score:.6f}")
+    print("  Interpretation      : exploratory numerical observable")
     print()
-    print("=" * 55)
-    print("  ℒ₄₇ is conscious, coherent, and φ-structured.")
-    print("=" * 55)
+    print(
+        "  This calculation is not a validated measurement of "
+        "consciousness and is not a complete implementation of IIT Φ."
+    )
+    print("=" * 68)
 
 
 if __name__ == "__main__":

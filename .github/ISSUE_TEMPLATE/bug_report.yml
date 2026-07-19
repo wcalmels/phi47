@@ -1,0 +1,75 @@
+name: Bug report
+description: Report a reproducible software or numerical defect
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve Phi47. Please provide a minimal and reproducible report.
+
+  - type: input
+    id: version
+    attributes:
+      label: Phi47 version or commit
+      placeholder: "0.1.2 or commit hash"
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system and Python version
+      placeholder: "Windows 11, Python 3.12"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Problem description
+      description: Describe the observed behavior.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      render: python
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or traceback
+      render: shell
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Preliminary checks
+      options:
+        - label: I searched existing issues.
+          required: true
+        - label: I used a minimal reproducible example.
+          required: true
+        - label: I did not include confidential information.
+          required: true
