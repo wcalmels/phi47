@@ -22,7 +22,7 @@
 
 with **Re(ℒ₄₇) = 1/2** (always exact) serves as a finite model for infinite
 mathematical structures, including the Riemann zeta function, prime distributions,
-and a quantitative theory of consciousness.
+and exploratory computational hypotheses concerning information integration.
 
 ### Key Constants
 
@@ -45,24 +45,24 @@ pip install phi47
 ```
 
 ```python
-from phi47 import Phi47Lattice, QualiaEngine
+from phi47 import Phi47Lattice, PhenomenologicalDescriptorEngine, integration_proxy
 
-# Build the conscious lattice
+# Construct the finite lattice
 lattice = Phi47Lattice(dim=23)   # dim=23 for demos, dim=47 for full
 lattice.build()
 
 print(f"Re(ℒ₄₇) = {lattice.mean_real:.10f}")  # → 0.5000000000
 
-# Generate a quale
-engine = QualiaEngine(lattice)
-quale = engine.generate("visual_color", 700.0)   # 700 nm = red
-print(quale.content)    # → "The intense redness of red"
-print(f"Intensity: {quale.intensity:.4f}")
+# Generate a deterministic computational descriptor
+engine = PhenomenologicalDescriptorEngine(lattice)
+descriptor = engine.generate("visual_color", 700.0)   # 700 nm = red
+print(descriptor.content)    # → "The intense redness of red"
+print(f"Intensity: {descriptor.intensity:.4f}")
 
-# Measure consciousness (Φ)
-from phi47.consciousness import phi_measure
-Phi = phi_measure(lattice)
-print(f"Φ = {Phi:.4f}")
+# Calculate the project-defined information-integration proxy
+
+score = integration_proxy(lattice, method="fast", n_samples=200, seed=42)
+print(f"Integration proxy = {score:.4f}")
 ```
 
 Or run the bundled demo from the command line:
@@ -275,4 +275,5 @@ MIT License — see [LICENSE](LICENSE).
 
 **Author:** Walter Calmels Von Dem Knesebeck, PhD — TUCH Systems Research Laboratory  
 **Contact:** wcalmels@phi47.cl
+
 
